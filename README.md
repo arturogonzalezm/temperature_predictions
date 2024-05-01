@@ -25,3 +25,23 @@ To install Pandas, you can use pip:
 pip intsall -r requirements.txt
 ```
 
+# Climate Data Processor Flow
+
+This diagram illustrates the sequence of operations in the Climate Data Processor script:
+
+```mermaid
+flowchart TD
+    A[Start] --> B[Create Instance]
+    B --> C{Singleton Check}
+    C -- "If None" --> D[Create New Instance]
+    C -- "If Exists" --> E[Use Existing Instance]
+    D --> F[Initialize Data]
+    E --> F
+    F --> G[Read Input]
+    G --> H[Process Data]
+    H --> I[Print Interpolated Values]
+    I --> J[End]
+
+    classDef className fill:#f9f,stroke:#333,stroke-width:2px;
+    class B,C,D,E,F,G,H,I className;
+```
