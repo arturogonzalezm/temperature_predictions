@@ -17,11 +17,6 @@ def test_singleton_pattern(climate_instance):
     assert climate_instance is new_instance, "ClimateData class is not following singleton pattern"
 
 
-def singleton_behavior(climate_instance):
-    new_instance = ClimateData()
-    assert climate_instance is new_instance
-
-
 def read_input_with_valid_data(mock_stdin, climate_instance):
     mock_stdin("2\nyear\tmonth\ttmax\ttmin\n2021\tJan\t25\t15\n2021\tFeb\t20\t10\n")
     climate_instance.read_input()
