@@ -24,7 +24,7 @@ jobs:
           auto-update-conda: true
           python-version: ${{ matrix.python-version }}
           environment-file: environment.yml
-          activate-environment: real_estate_broker_python
+          activate-environment: temperature_predictions
           channels: anaconda, conda-forge
       - name: Run Tests and Generate Coverage Report
         run: |
