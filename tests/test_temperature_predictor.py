@@ -64,3 +64,30 @@ def print_interpolated_values_with_missing_values(mock_stdin, capsys, climate_in
     climate_instance.print_interpolated_values()
     captured = capsys.readouterr()
     assert len(captured.out.splitlines()) == 2
+
+
+def print_interpolated_values_with_missing_tmax(mock_stdin, capsys, climate_instance):
+    mock_stdin("2\nyear\tmonth\ttmax\ttmin\n2021\tJan\tMissing\t15\n2021\tFeb\t20\t10\n")
+    climate_instance.read_input()
+    climate_instance.process_data()
+    climate_instance.print_interpolated_values()
+    captured = capsys.readouterr()
+    assert len(captured.out.splitlines()) == 1
+
+
+def print_interpolated_values_with_missing_tmin(mock_stdin, capsys, climate_instance):
+    mock_stdin("2\nyear\tmonth\ttmax\ttmin\n2021\tJan\t25\tMissing\n2021\tFeb\t20\t10\n")
+    climate_instance.read_input()
+    climate_instance.process_data()
+    climate_instance.print_interpolated_values()
+    captured = capsys.readouterr()
+    assert len(captured.out.splitlines()) == 1
+
+
+def print_interpolated_values_with_all_missing_values(mock_stdin, capsys, climate_instance):
+    mock_stdin("2\nyear\tmonth\ttmax\ttmin\n2021\tJan\tMissing\tMissing\n2021\tFeb\t20\t10\n")
+    climate_instance.read_input()
+    climate_instance.process_data()
+    climate_instance.print_interpolated_values()
+    captured = capsys.readouterr()
+    assert len(captured.out.splitlines()) == 2
